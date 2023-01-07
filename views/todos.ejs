@@ -1,7 +1,7 @@
 <div>
   <div class="flex">
     <h5>Overdue</h5>
-    <span id="count-overdue" class="bg-gray-200 rounded ml-1 px-1.5"
+    <span id="count-overdue" class="bg-blue-200 rounded ml-1 px-1.5"
       ><%= inCompletedOverduedTodos.length %></span
     >
   </div>
@@ -12,7 +12,7 @@
         class="flex items-center w-fit my-2 px-2 py-1 rounded hover:bg-purple-50"
       >
         <input id="overdueTodos-checkbox-<%= inCompletedOverduedTodos[i].id %>"
-        class="text-blue-600 rounded w-4 h-4 bg-gray-100 border border-gray-200
+        class="text-blue-600 rounded w-4 h-4 bg-gray-100 border border-thistle-200
         cursor-pointer" type="checkbox" <%= inCompletedOverduedTodos[i].completed
         ? "checked" : "" %> onclick="updateTodo(<%=
         inCompletedOverduedTodos[i].id %>)" />
@@ -49,11 +49,11 @@
 
 <div class="flex">
   <h5>Due Today</h5>
-  <span id="count-due-today" class="bg-gray-200 rounded ml-1 px-1.5"
+  <span id="count-due-today" class="bg-blue-200 rounded ml-1 px-1.5"
     ><%= inCompletedDueTodayTodos.length %></span
   >
 </div>
-<div class="bg-grey-200"></div>
+<div class="bg-pink-200"></div>
 <ul class="list-no my-2">
   <% for(let i = 0; i < inCompletedDueTodayTodos.length; i++) { %>
   <li class="Todo-item">
@@ -97,7 +97,7 @@
 
 <div class="flex">
   <h5>Due Later</h5>
-  <span id="count-due-later" class="bg-gray-200 rounded ml-1 px-1.5"
+  <span id="count-due-later" class="bg-blue-200 rounded ml-1 px-1.5"
     ><%= inCompletedDueLaterTodos.length %></span
   >
 </div>
@@ -144,7 +144,7 @@
 
 <div class="flex">
   <h5>Completed Items</h5>
-  <span id="count-due-later" class="bg-gray-200 rounded ml-1 px-1.5"
+  <span id="count-due-later" class="bg-blue-200 rounded ml-1 px-1.5"
     ><%= completedTodos.length %></span
   >
 </div>
