@@ -2,29 +2,29 @@
   <div class="flex">
     <h5>Overdue</h5>
     <span id="count-overdue" class="bg-gray-200 rounded ml-1 px-1.5"
-      ><%= inCompletedOverdueTodos.length %></span
+      ><%= inCompletedOverduedTodos.length %></span
     >
   </div>
   <ul class="list-no my-2">
-    <% for(let i = 0; i < inCompletedOverdueTodos.length; i++) { %>
+    <% for(let i = 0; i < inCompletedOverduedTodos.length; i++) { %>
     <li class="Todo-item">
       <div
         class="flex items-center w-fit my-2 px-2 py-1 rounded hover:bg-purple-50"
       >
-        <input id="overdueTodos-checkbox-<%= inCompletedOverdueTodos[i].id %>"
+        <input id="overdueTodos-checkbox-<%= inCompletedOverduedTodos[i].id %>"
         class="text-blue-600 rounded w-4 h-4 bg-gray-100 border border-gray-200
-        cursor-pointer" type="checkbox" <%= inCompletedOverdueTodos[i].completed
+        cursor-pointer" type="checkbox" <%= inCompletedOverduedTodos[i].completed
         ? "checked" : "" %> onclick="updateTodo(<%=
-        inCompletedOverdueTodos[i].id %>)" />
+        inCompletedOverduedTodos[i].id %>)" />
         <label
-          for="overdueTodos-checkbox-<%= inCompletedOverdueTodos[i].id %>"
+          for="overdueTodos-checkbox-<%= inCompletedOverduedTodos[i].id %>"
           class="ml-2 text-sm cursor-pointer"
-          ><%= inCompletedOverdueTodos[i].title %></label
+          ><%= inCompletedOverduedTodos[i].title %></label
         >
         <a
           href="#"
           class="hidden trash-icon ml-2"
-          onclick="deleteTodo(<%= inCompletedOverdueTodos[i].id %>)"
+          onclick="deleteTodo(<%= inCompletedOverduedTodos[i].id %>)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

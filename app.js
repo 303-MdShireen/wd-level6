@@ -19,27 +19,27 @@ app.get("/", async (request, response) => {
   const getCompletedTodos = (x) => x.completed == true;
   const getInCompleteTodos = (x) => x.completed == false;
 
-  const overdueTodos = await Todo.getOverdueTodos();
-  const dueTodayTodos = await Todo.getDueTodayTodos();
-  const dueLaterTodos = await Todo.getDueLaterTodos();
+  const overDueTodos = await Todo.getOverdueTodos();
+  const dueTodaysTodo = await Todo.getDueTodayTodos();
+  const dueLatersTodo = await Todo.getDueLaterTodos();
 
-  const inCompletedOverdueTodos = overdueTodos.filter(getInCompleteTodos);
-  const inCompletedDueTodayTodos = dueTodayTodos.filter(getInCompleteTodos);
-  const inCompletedDueLaterTodos = dueLaterTodos.filter(getInCompleteTodos);
+  const inCompletedOverduedTodos = overDueTodos.filter(getInCompleteTodos);
+  const inCompletedDueTodayTodos = dueTodaysTodo.filter(getInCompleteTodos);
+  const inCompletedDueLaterTodos = dueLatersTodo.filter(getInCompleteTodos);
 
-  const completedTodos = overdueTodos
+  const completedTodos = overDueTodos
     .filter(getCompletedTodos)
     .concat(
-      await dueTodayTodos.filter(getCompletedTodos),
-      await dueLaterTodos.filter(getCompletedTodos)
+      await dueTodaysTodo.filter(getCompletedTodos),
+      await dueLatersTodo.filter(getCompletedTodos)
     );
 
   if (request.accepts("html")) {
     response.render("index", {
-      overdueTodos,
-      dueTodayTodos,
-      dueLaterTodos,
-      inCompletedOverdueTodos,
+      overDueTodos,
+      dueTodaysTodo,
+      dueLatersTodo,
+      inCompletedOverduedTodos,
       inCompletedDueTodayTodos,
       inCompletedDueLaterTodos,
       completedTodos,
@@ -47,10 +47,10 @@ app.get("/", async (request, response) => {
     });
   } else {
     response.json({
-      overdueTodos,
-      dueTodayTodos,
-      dueLaterTodos,
-      inCompletedOverdueTodos,
+      overDueTodos,
+      dueTodaysTodo,
+      dueLatersTodo,
+      inCompletedOverduedTodos,
       inCompletedDueTodayTodos,
       inCompletedDueLaterTodos,
       completedTodos,
@@ -114,16 +114,7 @@ app.delete("/todos/:id", async function (request, response) {
     console.log(error);
     return response.status(422).json(error);
   }
-  // const todo = await Todo.findByPk(request.params.id);
-  // try {
-  //   if (todo === null) return response.send(false);
-  //   else {
-  //     const deletedTodosCount = await todo.destroy({
-  //       where: { id: request.params.id },
-  //     });
-  //     return response.json(true);
-  //   }
-  // }
+ 
 });
 
 module.exports = app;
