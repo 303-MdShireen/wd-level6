@@ -1,11 +1,6 @@
-const app = require("./app.js");
-const express = require("express");
-const path = require("path");
+const app = require("./app");
 
-app.set("view engine", "ejs");
-
-app.use(express.static(path.join(__dirname, "public")));
-
-app.listen(process.env.PORT || 1500, () => {
-  console.log("Started express server");
+const PORT = process.env.PORT || 1600;
+app.listen(PORT, () => {
+  console.log(`Started express sever on port ${PORT}`);
 });
