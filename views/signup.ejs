@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="<%= csrfToken %>" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="grid grid-cols-6">
+      <div class="col-start-3 col-span-2"><%- include('header.ejs') %></div>
+    </div>
+    <div class="flex justify-center pt-6">
+      <div class="flex justify-between gap-24">
+        <h1 class="py-4 text-xl flex items-center justify-center font-bold">Sign up</h1>
+        <div class="flex items-center">
+          <a href="/" class="px-8 bg-gray-100 hover:bg-gray-200 p-2 rounded-lg border-2 border-black flex justify-center">Home</a>
+        </div>  
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <form
+        action="/users"
+        method="post"
+        class="flex flex-col justify-center items-center w-1/5"
+      >
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="py-3">
+          <label for="firstName">First Name:</label>
+          <input
+            type="text"
+            name="firstName"
+            class="border border-gray-300 text-gray-900 rounded p-2 w-full"
+          />
+        </div>
+        <div class="py-3">
+          <label for="lastName">Last Name:</label>
+          <input
+            type="text"
+            name="lastName"
+            class="border border-gray-300 text-gray-900 rounded p-2 w-full"
+          />
+        </div>
+        <div class="py-3">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            class="border border-gray-300 text-gray-900 rounded p-2 w-full"
+          />
+        </div>
+        <div class="py-3">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            class="border border-gray-300 text-gray-900 rounded p-2 w-full"
+          />
+        </div>
+        <div class="py-3">
+          <button
+            type="submit"
+            class="text-white bg-green-600 hover:bg-green-800 font-medium rounded px-5 py-2"
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
+    </div>
+    <p class="pt-4 flex justify-center">Already have an account?</p>
+    <div class="pt-6 flex justify-center">
+      <a href="/login" class="px-8 bg-gray-100 hover:bg-green-200 p-2 rounded-lg border-2 border-black flex justify-center">Login</a>
+    </div>
+    <div class="flex flex-col justify-center items-center gap-3 ">
+      <% if (messages && messages.error && messages.error.length > 0) { %>
+        <% for(var i=0; i<messages.error.length; i++) {%>
+          <div class="bg-red-300 text-red-900 p-2 rounded-lg shadow"> <%= messages.error[i] %></div>
+        <% } %>
+      <% } %>
+    </div>
+  </body>
+</html>
