@@ -8,24 +8,24 @@
     <title>TO-DO Manager</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="p-4">
+  <body class="p-4 bg-yellow-200">
     <div class="flex flex-col justify-center items-center gap-4">
       <div class="col-start-3 col-span-2"><%- include('header.ejs') %></div>
       <div class="flex flex-col justify-center">
-        <p class="py-2 text-3xl pb-6">Welcome to TO-DO manager</p>
+        <p class="py-2 text-xl font-medium pb-6">Welcome to TO-DO manager</p>
         <div class="flex flex-col justify-center items-center">
           <div class="w-1/2 flex flex-col justify-center">
-            <p>New here?</p>
+            <p class="text-blue-900">New here?</p>
             <a
               href="/signup"
-              class="px-8 bg-gray-100 hover:bg-green-200 p-2 rounded-lg border-2 border-black flex justify-center"
+              class="px-8 bg-red-100 hover:bg-green-200 p-2 rounded-lg border-2 border-dashed border-black flex justify-center"
               >Sign Up</a
             >
 
-            <p class="pt-6">Already have an account?</p>
+            <p class="pt-6 text-blue-900">Already have an account?</p>
             <a
               href="/login"
-              class="px-8 bg-gray-100 hover:bg-green-200 p-2 rounded-lg border-2 border-black flex justify-center"
+              class="px-8 bg-red-100 hover:bg-green-200 p-2 rounded-lg border-2 border-dashed border-black flex justify-center"
               >Login</a
             >
           </div>

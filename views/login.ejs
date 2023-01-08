@@ -8,9 +8,9 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body>
+  <body class="p-4 bg-yellow-200">
     <div class="grid grid-cols-6">
-      <div class="col-start-3 col-span-2"><%- include('header.ejs') %></div>
+      <div class="col-start-3 col-span-2 flex justify-center"><%- include('header.ejs') %></div>
     </div>
     <div class="flex justify-center pt-6">
       <div class="flex justify-between gap-24">
@@ -53,7 +53,7 @@
         </div>
       </form>
     </div>
-    <p class="pt-4 flex justify-center">New user?</p>
+    <p class="pt-4 flex justify-center text-blue-900">New user to regsiter?</p>
     <div class="pt-6 flex justify-center">
       <a href="/signup" class="px-8 bg-gray-100 hover:bg-green-200 p-2 rounded-lg border-2 border-black flex justify-center">Sign up</a>
     </div>
