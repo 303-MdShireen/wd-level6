@@ -2,36 +2,83 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="csrf-token" content="<%= csrfToken %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="<%= csrfToken %>" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>TO-DO Manager</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>My todo Manager</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script>
+      var token = document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content");
+      function updateTodo(id) {
+        fetch(`/todos/${id}`, {
+          method: "put",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            _csrf: token,
+          }),
+        })
+          .then((res) => {
+            if (res.ok) {
+              window.location.reload();
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+      function deleteTodo(id) {
+        fetch(`/todos/${id}`, {
+          method: "delete",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            _csrf: token,
+          }),
+        })
+          .then((res) => {
+            if (res.ok) {
+              window.location.reload();
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
   </head>
-  <body class="p-4 bg-yellow-100">
-    <div class="flex flex-col justify-center items-center gap-4">
-      <div class="col-start-3 text-black font-bold col-span-2"><%- include('header.ejs') %></div>
-      <div class="flex flex-col justify-center">
-        <p class="py-2 text-green-3xl font-bold pb-6">Welcome to TO-DO Manager Page</p>
-        <div class="flex flex-col justify-center items-center">
-          <div class="w-1/2 flex flex-col justify-center">
-            <p class="text-black font-medium text-blue-900">New User to Register?</p>
-            <a
-              href="/signup"
-              class="px-8 bg-red-100 hover:bg-green-200 p-2 rounded-lg border-4 border-black flex justify-center border-double text-[15px]"
-              >Sign Up</a
-            >
-            
-            <p class="pt-10 text-black font-medium text-blue-900">Already have an account?</p>
-            <a
-              href="/login"
-              class="px-8 bg-red-100 hover:bg-green-200 p-2 rounded-lg border-4  border-double border-black flex justify-center text-[15px]"
-              >Login</a
-            >
+  <body>
+    <div class="grid grid-cols-6">
+      <div class="col-start-3 col-span-2">
+        <%- include('header.ejs') %>
+        <form action="/todos" method="POST">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="flex gap-2 py-4">
+            <div class="flex-auto">
+              <input
+                type="text"
+                name="title"
+                placeholder="What's next?"
+                class="rounded border border-gray-600 text-gray-900 p-2 text-sm w-full"
+                required
+              />
+            </div>
+            <div class="flex-auto">
+              <input
+                type="date"
+                name="dueDate"
+                class="rounded border border-gray-600 text-gray-900 p-2 text-sm w-full leading-4"
+                required
+              />
+            </div>
+            <div class="flex-no">
+              <button
+                type="submit"
+                class="bg-green-600 text-white rounded px-5 py-1.5 font-medium mr-2 md-2"
+              >
+                Add
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
+        <%- include('todos.ejs') -%>
       </div>
     </div>
-    <div class="flex justify-center pt-16"><%- include('footer.ejs') %></div>
   </body>
 </html>
